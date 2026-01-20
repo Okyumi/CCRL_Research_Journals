@@ -5,6 +5,8 @@ This repository mainly serves as a **tracking log** for my ongoing research proj
 
 ---
 
+
+
 ### General Takeaways So Far
 
 > [!NOTE]
@@ -16,19 +18,16 @@ This repository mainly serves as a **tracking log** for my ongoing research proj
 > In practice, this means you should be able to answer questions clearly, no matter who asks them. If you truly understand something, you can explain it in the simplest language, and ideally you can walk others through a few concrete examples. The reason you can answer questions well is that, before others even ask, you should already anticipate many of the questions during your own thinking and research. Then you can use papers, references, AI tools, and your own reasoning to work toward solid answers. You also need to stay alert to any hidden assumptions behind an answer.  
 >  
 > The most important mindset is to be absolutely honest about what you know and what you do not know. Do not settle for shallow understanding. Face your gaps and ignorance directly, and do not be embarrassed to ask. Keep digging until you get to the bottom of the issue, and build a truly deep grasp of your research. This is also how he guided us. For every statement we made and every algorithm we proposed, he would try to understand it very thoroughly, not in a vague or superficial way, and never with empty, formal sounding talk (that I had with some other professor I had worked with).  
-
+>
 > **First-principles thinking is essential.**  
 >  
 > The second thing I learned what is often called first principles thinking. It means setting aside what others have done and not getting trapped by the current status quo. Instead, you go back to the original starting point and focus on the real problem you are trying to solve. From there, you try to solve the problem itself, rather than simply building on top of someone else’s solution.  
-
----
-
+>
 > **Think top-down, execute bottom-up.**  
 >  
 > From that foundation, we often use a top down approach. First, we state the problem clearly. That becomes the vision. Then we ask what directions might lead to a solution. Under each direction, we keep decomposing until the work becomes a set of small, executable tasks. Then we start with the next executable step.
-
----
-
+>
+>
 > **Productivity follows physics.**  
 >  
 > Newton’s First Law of Motion states that an object will remain at rest or move at a constant velocity unless acted upon by an external force. The same applies to productivity. Often, the hardest part of a task is simply starting, because kinetic friction is less than static friction.  
@@ -37,3 +36,20 @@ This repository mainly serves as a **tracking log** for my ongoing research proj
 
 ---
 
+### Jan 20
+What I found/done.
+1. **Actor has two phases**
+   - Rollout collection: goal is the environment's goal.
+   - Training updates: goal uses hindsight relabeling and samples from the replay buffer.
+2. **Masking detail in original setup**
+   - Only one positive sample.
+   - No distinction between `(s, a, g)` from the same trajectory vs. different trajectories in the replay buffer.
+3. **Restructure the replay buffer.**
+4. **Sampling diversity**
+   - Sample transitions `(s, a, s', g')` from as many different trajectories as possible.
+5. **Sliced goal clarification**
+   - The sliced goal is the cube position, not arm position or distance.
+   - If the cube never moves, the future-state goal is nearly constant across that trajectory, so HER won't provide varied goals; learning can stall unless exploration moves the cube (or other trajectories do).
+6. **Evaluation metric**
+   - They report "time at goal" rather than the success condition.
+7. **UTD ratio is high.**
