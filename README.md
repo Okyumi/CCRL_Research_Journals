@@ -37,7 +37,7 @@ This repository mainly serves as a tracking log for my ongoing research project,
 ---
 Before introducing the continual learning pipeline, we define the core objective functions based on the probabilistic view of reinforcement learning.
 
-## Goal-Conditioned Reward
+### Goal-Conditioned Reward
 
 We define the reward function as the probability density of reaching a goal $g$ in the next time step:
 
@@ -47,7 +47,7 @@ $$
 
 where $\gamma$ is the discount factor.
 
-## Discounted State Visitation Distribution
+### Discounted State Visitation Distribution
 
 Conditioned on a policy $\pi$ and a goal $g$, the discounted state visitation distribution is defined as:
 
@@ -57,7 +57,7 @@ $$
 
 where $p_t^{\pi}(s)$ is the probability that policy $\pi$ visits state $s$ at step $t$.
 
-## Goal-Conditioned Q-Function
+### Goal-Conditioned Q-Function
 
 Under this formulation, the Q-function is equivalent to the probability of visiting the goal $g$ in the future, starting from $(s,a)$:
 
@@ -67,7 +67,7 @@ $$
 
 This allows us to train the critic as a classifier using contrastive learning rather than regression.
 
-## The Objective
+### The Objective
 
 The general goal is to maximize the expected cumulative discounted reward over the distribution of initial states $p_0(s_0)$ and goals $p_g(g)$:
 
@@ -81,7 +81,7 @@ $$
 \max_{\pi} \mathbb{E}_{s_0 \sim p_0, g \sim p_g, \pi} \left[ \sum_{t=0}^{\infty} \gamma^t (1 - \gamma) p(s_{t+1} = g \mid s_t, a_t) \right]
 $$
 
-## InfoNCE Loss
+### InfoNCE Loss
 
 To optimize the Q-function (critic) as a classifier, we employ the InfoNCE loss. Let the critic score be defined as the negative $L_2$ distance between the state-action embedding $\phi(s,a)$ and the goal embedding $\psi(g)$, denoted as $f(s, a, g) = -\|\phi(s, a) - \psi(g)\|_2$. Given a positive goal $g^+$ (a future state from the same trajectory) and a set of $K$ negative goals $\{g^-_j\}_{j=1}^K$ (sampled from different trajectories), the loss is:
 
@@ -91,8 +91,7 @@ $$
 
 ---
 
-### Jan12 - Jan18
-what i have done this week:
+### Jan12 - Jan18 Updates:
 
 1. implemented contrastive reinforcement learning in pytorch.
 
@@ -116,8 +115,7 @@ what i have done this week:
 
 ---
 
-### Jan 20
-What I found/done.
+### Jan 20 Updates:
 1. Actor has two phases
    - Rollout collection: goal is the environment's goal.
    - Training updates: goal uses hindsight relabeling and samples from the replay buffer.
