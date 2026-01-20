@@ -5,10 +5,10 @@ This repository mainly serves as a **tracking log** for my ongoing research proj
 
 ---
 
-## Notes on Doing Research
-
 ### General Takeaways So Far
 
+> [!NOTE]
+>  
 > **Deep understanding matters more than anything else.**  
 >  
 > One of the most important things I learned from my past research experience is the value of deep understanding in research, which is, never pretend that you understand. When you study a problem, you should not stop at the level of repeating someone else’s explanation. You should understand every part of it. If anything feels confusing, you should not pretend you understand. You should keep asking questions, again and again, unless you can barely find any questions. For the topic you are working on, you need to know it more deeply than anyone else.  
