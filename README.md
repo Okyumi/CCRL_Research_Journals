@@ -38,3 +38,4 @@ This repository mainly serves as a **tracking log** for my ongoing research proj
 > Your next executable step should be small, because smaller steps reduce friction and make it easier to start. For example, if I want to run experiments, I may first need to modify code. Then my next executable step could be as simple as opening my laptop lid. After that, opening VS Code or PyCharm or Cursor, connecting to the HPC or the cloud, and continuing from there. Each step should be specific, small, and something you can hold yourself accountable to.  
 
 ---
+
