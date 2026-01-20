@@ -17,8 +17,6 @@ This repository mainly serves as a **tracking log** for my ongoing research proj
 >  
 > The most important mindset is to be absolutely honest about what you know and what you do not know. Do not settle for shallow understanding. Face your gaps and ignorance directly, and do not be embarrassed to ask. Keep digging until you get to the bottom of the issue, and build a truly deep grasp of your research. This is also how he guided us. For every statement we made and every algorithm we proposed, he would try to understand it very thoroughly, not in a vague or superficial way, and never with empty, formal sounding talk (that I had with some other professor I had worked with).  
 
----
-
 > **First-principles thinking is essential.**  
 >  
 > The second thing I learned what is often called first principles thinking. It means setting aside what others have done and not getting trapped by the current status quo. Instead, you go back to the original starting point and focus on the real problem you are trying to solve. From there, you try to solve the problem itself, rather than simply building on top of someone else’s solution.  
