@@ -86,7 +86,7 @@ $$
 To optimize the Q-function (critic) as a classifier, we employ the InfoNCE loss. Let the critic score be defined as the negative $L_2$ distance between the state-action embedding $\phi(s,a)$ and the goal embedding $\psi(g)$, denoted as $f(s, a, g) = -\|\phi(s, a) - \psi(g)\|_2$. Given a positive goal $g^+$ (a future state from the same trajectory) and a set of $K$ negative goals $\{g^-_j\}_{j=1}^K$ (sampled from different trajectories), the loss is:
 
 $$
-\mathcal{L}_{\text{InfoNCE}} = \mathbb{E}_{\mathcal{D}} \left[ -\log \frac{\exp(f(s, a, g^+))}{\exp(f(s, a, g^+)) + \sum_{j=1}^{K} \exp(f(s, a, g^-_j))} \right]
+\mathcal{L}_{\text{InfoNCE}} = \mathbb{E}_{\mathcal{D}} \left[ -\log \frac{\exp(f(s, a, g^+))}{\exp(f(s, a, g^+)) + \sum_{j=1}^{K} \exp(f(s, a, g^{-_j}))} \right]
 $$
 
 ---
@@ -97,9 +97,9 @@ $$
 
 2. studied the metaworld environment in detail based on its official documentation.
 
-3. investigated metaworld by reading through the source code.
+3. investigated metaworld by reading through the source code, see [TASK_GOAL_ANALYSIS](metaworld/TASK_GOAL_ANALYSIS.md).
 
-4. clarified what information is available at environment initialization, including the format and shape of observations, rewards, goals, and internal states.
+4. clarified what information is available at environment initialization, including the format and shape of observations, rewards, goals, and internal states, see [METAWORLD_ENVIRONMENT_ANALYSIS](metaworld/METAWORLD_ENVIRONMENT_ANALYSIS.md).
 
 5. a preliminary environment wrapper to redefine the reward, customize reset behavior, and explicitly define desired_goal and critic_goal.
 
