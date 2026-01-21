@@ -137,12 +137,12 @@ $$
 1. For the manipulation task in that paper, specifically arm-push,  the environment has one goal designating the object's final coordinates, let's denote it as g_env. During the rollouts (collecting the experiences), actor always see observation + (g_env + some random noise); during the training of the actor network, they sample transitions from replay buffer, they use hindsight relabeling to change the goal to make it align with the ground truth future state.
 
 2. Notice that when they report their results, they show their main figure y-axis as “time at goal” rather than the success rate of the tasks. For the arm-push task, the environment goal is the object position of the cube. They initialize their robotic arm’s position to be very close to the cube, such that during the exploration phase the hand can easily touch the object and hence change the object’s position.
-
-  If the actor never touches or moves the cube, the HER goals will stay constant for those trajectories, and learning can stall until some exploration episodes do move the cube. They make the robotic arm close to the cube, so during exploration the arm can actually touch it, thereby changing the object position, and these changes contribute to the learning signals in the critics’ encoders. Hence, for their experiment, they can simply set the goal as the object’s coordinates without further engineering, such as adding another goal like the distance between the arm and the object.
-
-  For Meta-World, it is a different story. During the exploration phase, the arm can never touch the cube, so nothing ever changes in any future state’s relabeling, resulting in no learning signals (given that the goal is a subset of the state, and here it is just the indices of the object’s position).
-
-  We need to engineer the goal a bit, or we can also position our arm close to the cube, but I do not want to do that.
-
-  To resolve the issue of the arm never touching the cube during the exploration phase, I change the whole actor backbone to see if a stronger actor can eventually touch the cube.
-  But more importantly, as I suggested, I think it is about the goal engineering.
+   
+   If the actor never touches or moves the cube, the HER goals will stay constant for those trajectories, and learning can stall until some exploration episodes do move the cube. They make the robotic arm close to the cube, so during exploration the arm can actually touch it, thereby changing the object position, and these changes contribute to the learning signals in the critics’ encoders. Hence, for their experiment, they can simply set the goal as the object’s coordinates without further engineering, such as adding another goal like the distance between the arm and the object.
+   
+   For Meta-World, it is a different story. During the exploration phase, the arm can never touch the cube, so nothing ever changes in any future state’s relabeling, resulting in no learning signals (given that the goal is a subset of the state, and here it is just the indices of the object’s position).
+   
+   We need to engineer the goal a bit, or we can also position our arm close to the cube, but I do not want to do that.
+   
+   To resolve the issue of the arm never touching the cube during the exploration phase, I change the whole actor backbone to see if a stronger actor can eventually touch the cube.
+   But more importantly, as I suggested, I think it is about the goal engineering.
