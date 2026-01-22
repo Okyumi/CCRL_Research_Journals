@@ -126,8 +126,7 @@ $$ \max_\pi \mathbb{E}_{\tau \sim \pi, g \sim p_g} \left[ \sum_{t=0}^{\infty} \g
     *   ...
     *   At $t=k$, is $s_{k+1}$ the goal? **YES.** $\to \mathbf{1}(\dots) = 1$.
 3.  **The Sum:** The summation collapses to:
-    $$
-    0 + 0 + \dots + (\gamma^k \cdot 1) + (\gamma^{k+1} \cdot 1) + \dots
+    $$ 0 + 0 + \dots + (\gamma^k \cdot 1) + (\gamma^{k+1} \cdot 1) + \dots
     $$
     *(Assuming that once the agent reaches the goal, it stays there).*
 This effectively means the objective is to **minimize $k$** (the time it takes to reach the goal).
