@@ -128,7 +128,8 @@ $$ \max_\pi \mathbb{E}_{\tau \sim \pi, g \sim p_g} \left[ \sum_{t=0}^{\infty} \g
 3.  **The Sum:** The summation collapses to:
 
 $$ 0 + 0 + \dots + (\gamma^k \cdot 1) + (\gamma^{k+1} \cdot 1) + \dots $$
-    *(Assuming that once the agent reaches the goal, it stays there).*
+
+    Assuming that once the agent reaches the goal, it stays there.
 This effectively means the objective is to **minimize $k$** (the time it takes to reach the goal).
 Since $\gamma < 1$ (e.g., 0.99), the faster you reach the goal (smaller $k$), the larger the term $\gamma^k$ becomes.
 
