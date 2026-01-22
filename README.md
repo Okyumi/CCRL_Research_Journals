@@ -114,12 +114,36 @@ $$
 10. collected preliminary observations from these experiments.
 
 ---
+### Jan 20 Meeting:
+- Based on the definition $r_g(s_t, a_t) = (1-\gamma)p(s_{t+1}=g|s_t, a_t)$, the reward signal for 99% of the trajectory is effectively **zero**.
+- We can rewrite the objective (ignoring the scaling constant $1-\gamma$ for clarity, as it doesn't change the maximization) as:
+
+$$ \max_\pi \mathbb{E}_{\tau \sim \pi, g \sim p_g} \left[ \sum_{t=0}^{\infty} \gamma^t \cdot \mathbf{1}(s_{t+1} = g) \right] $$
+1.  **The Trajectory:** the agent generates a path: $s_0, s_1, s_2, \dots, s_{100}$.
+2.  **The Sparse Signal:**
+    *   At $t=0$, is $s_1$ the goal? No. $\to \mathbf{1}(\dots) = 0$.
+    *   At $t=1$, is $s_2$ the goal? No. $\to \mathbf{1}(\dots) = 0$.
+    *   ...
+    *   At $t=k$, is $s_{k+1}$ the goal? **YES.** $\to \mathbf{1}(\dots) = 1$.
+3.  **The Sum:** The summation collapses to:
+    $$ 0 + 0 + \dots + (\gamma^k \cdot 1) + (\gamma^{k+1} \cdot 1) + \dots $$
+    *(Assuming that once the agent reaches the goal, it stays there).*
+This effectively means the objective is to **minimize $k$** (the time it takes to reach the goal).
+Since $\gamma < 1$ (e.g., 0.99), the faster you reach the goal (smaller $k$), the larger the term $\gamma^k$ becomes.
+
+*   If you reach the goal in 5 steps: Total Value $\approx 0.99^5 \approx 0.95$.
+*   If you reach the goal in 100 steps: Total Value $\approx 0.99^{100} \approx 0.36$.
+*   If you never reach the goal: Total Value = $0$.
+
+So, maximizing this sparse expectation is mathematically equivalent to **"Reaching the goal as fast as possible."**
+
+---
 
 ### Jan 20 Updates:
-1. Actor has two phases
-   - Rollout collection: goal is the environment's goal.
-   - Training updates: goal uses hindsight relabeling and samples from the replay buffer.
-2. Masking detail in original setup for the infoNCE loss function
+1. Notice the off-policy nature of the Actor.
+   - Rollout collection/behavior policy: goal is the environment's goal.
+   - Training updates/target policy: goal uses hindsight relabeling and samples from the replay buffer.
+2. The masking detail in their setup for the infoNCE loss function
    - Only one positive sample.
    - No distinction between `(s, a, g)` from the same trajectory vs. different trajectories in the replay buffer.
 3. Restructure the replay buffer.
@@ -131,6 +155,8 @@ $$
 6. Evaluation metric
    - They report "time at goal" rather than the success condition.
 7. Their UTD ratio is high.
+
+
 
 ---
 ### Jan 21 Updates:
@@ -146,3 +172,21 @@ $$
    
    To resolve the issue of the arm never touching the cube during the exploration phase, I change the whole actor backbone to see if a stronger actor can eventually touch the cube.
    But more importantly, as I suggested, I think it is about the goal engineering.
+---
+### Jan 22 Updates:
+1. Regarding the UTD ratio:
+  - They do one data collection step (an “actor step”) that generates num_envs * unroll_length transitions, and then run a fixed number of SGD updates on batches from the replay buffer. That’s where the UTD comes from.
+  - With the defaults:
+    - num_envs=512
+    - unroll_length=62
+    - num_sgd_batches_per_training_step=800
+    - Env steps per training step = 512*62 = 31,744.
+  - Updates per training step = 800.UTD is about 800 / 31,744 which is 0.0252; about 1 update per 40 environment transitions.
+2. Regarding the Critic Training: 
+  - During training, each sampled trajectory is relabeled inside flatten_crl_fn: it picks a future state from the same episode, extracts an achieved-goal slice from that future state, and replaces the observation’s goal with that achieved goal. This is the goal stored in transitions.observation used for training.The critic uses transitions.observation[:, args.obs_dim:] as its goal input, so it sees the relabeled goal, not the original desired goal from the env.The actor explicitly rebuilds an observation using future_state (same relabeled future), so it is conditioned on the same goal distribution as the critic.
+3. ToDos:
+  - Goal engineering for the metaworld task 3 (add another goal about [armposition - bloack]) so that HER relabeling can be changed.
+  - Try run multiple environments in parallel as well (perhaps less priority).
+  - Read their paper on Metaworld.
+
+---
