@@ -192,3 +192,6 @@ So, maximizing this sparse expectation is mathematically equivalent to **"Reachi
   - Read their paper on Metaworld.
 
 ---
+### Jan 23
+- [done] actor and critic training both use HER-relabeled goals (from c ritic_goal), while rollout/eval use [env_goal, 0].
+- In off-policy reinforcement learning, the behavior policy is usually designed to explore as much as possible, in order to cover a wide range of (s,a) pairs for training the target policy. This suggests that during rollout, the behavior policy might use different goals, while during evaluation the goal should always be set to the environment-defined goal. However, in goal-conditioned reinforcement learning, during rollout, the behavior policy usually still conditions on the environment-provided goal, which defines task success. Exploration mainly comes from stochastic actions (and sometimes goal noise), rather than from changing the goal at each episode.
