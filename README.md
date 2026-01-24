@@ -202,8 +202,10 @@ So, maximizing this sparse expectation is mathematically equivalent to **"Reachi
 - Early exploration is too weak → object never moves → HER targets constant.
 - Data diversity is tiny (single env, step‑by‑step) → critic logits collapse.
 - UTD is too high on low‑diversity data → model quickly collapses.
+- current training takes too long.
 - Possible solution:
     - run 512 envs in parallel (but that perhaps would need jax implementation?).
     - Need pro-longed exploration phase/behavior policy should be more explorative.
+    - Need to check their paper on metaworld.
 
 
