@@ -195,3 +195,11 @@ So, maximizing this sparse expectation is mathematically equivalent to **"Reachi
 ### Jan 23
 - [done] actor and critic training both use HER-relabeled goals (from c ritic_goal), while rollout/eval use [env_goal, 0].
 - In off-policy reinforcement learning, the behavior policy is usually designed to explore as much as possible, in order to cover a wide range of (s,a) pairs for training the target policy. This suggests that during rollout, the behavior policy might use different goals, while during evaluation the goal should always be set to the environment-defined goal. However, in goal-conditioned reinforcement learning, during rollout, the behavior policy usually still conditions on the environment-provided goal, which defines task success. Exploration mainly comes from stochastic actions (and sometimes goal noise), rather than from changing the goal at each episode.
+---
+### Jan 24
+- Scale up actor and critic net from 4 layers -> 16 layers; episode return change from 0 to 14.
+- change nce_update_frequency to 40 to match the paper's UTD.
+- Possible solution:
+    - run 512 envs in parallel (but that perhaps would need jax implementation?).
+    - Need pro-longed exploration phase/behavior policy should be more explorative.
+
