@@ -199,7 +199,11 @@ So, maximizing this sparse expectation is mathematically equivalent to **"Reachi
 ### Jan 24
 - Scale up actor and critic net from 4 layers -> 16 layers; episode return change from 0 to 14.
 - change nce_update_frequency to 40 to match the paper's UTD.
+- Early exploration is too weak → object never moves → HER targets constant.
+- Data diversity is tiny (single env, step‑by‑step) → critic logits collapse.
+- UTD is too high on low‑diversity data → model quickly collapses.
 - Possible solution:
     - run 512 envs in parallel (but that perhaps would need jax implementation?).
     - Need pro-longed exploration phase/behavior policy should be more explorative.
+
 
