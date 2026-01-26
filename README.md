@@ -208,4 +208,15 @@ So, maximizing this sparse expectation is mathematically equivalent to **"Reachi
     - Need pro-longed exploration phase/behavior policy should be more explorative.
     - Need to check their paper on metaworld.
 
+<table>
+  <tr>
+    <td><video src="media/Jan24_rl-video-episode-0.mp4" controls width="240"></video></td>
+    <td><video src="media/Jan24_rl-video-episode-900.mp4" controls width="240"></video></td>
+    <td><video src="media/Jan24_rl-video-episode-1600.mp4" controls width="240"></video></td>
+  </tr>
+</table>
 
+---
+### Jan 26
+- they are collecting transitions from 512 envs in total, and result in a total steps of ~1e8, with exploration phase ~4e7.
+- in SAC we usually collect transition from 1 env with total steps of 1e6, exploration phase 1e4. if we want to collect all the transitions from 1 env, then it would take    0%|          | 5443/100000000 [00:17<88:20:36, 314.41it/s]; 88hours for 1 task, not to mention there are 9 tasks awaiting us.
