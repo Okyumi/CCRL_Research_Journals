@@ -1,24 +1,20 @@
 # CCRL_Research_Journals
-## Research Log 2026
 
 This repository mainly serves as a tracking log for my ongoing research project, for future reference.
-
-
-
 
 ### General Takeaways So Far
 
 > [!NOTE]
 >  
-> **Deep understanding matters more than anything else.**  
+> **never pretend that you understand.**  
 >  
-> never pretend that you understand. When you study a problem, you should not stop at the level of repeating someone else’s explanation. You should understand every part of it. If anything feels confusing, you should not pretend you understand. You should keep asking questions, again and again, unless you can barely find any questions. For the topic you are working on, you need to know it more deeply than anyone else.  
+> When you study a problem, you should not stop at the level of repeating someone else’s explanation. You should understand every part of it. If anything feels confusing, you should not pretend you understand. You should keep asking questions, again and again, unless you can barely find any questions. For the topic you are working on, you need to know it more deeply than anyone else.  
 >  
 > In practice, this means you should be able to answer questions clearly, no matter who asks them. If you truly understand something, you can explain it in the simplest language, and ideally you can walk others through a few concrete examples. The reason you can answer questions well is that, before others even ask, you should already anticipate many of the questions during your own thinking and research. Then you can use papers, references, AI tools, and your own reasoning to work toward solid answers. You also need to stay alert to any hidden assumptions behind an answer.  
 >  
 > The most important mindset is to be absolutely honest about what you know and what you do not know. Do not settle for shallow understanding. Face your gaps and ignorance directly, and do not be embarrassed to ask. Keep digging until you get to the bottom of the issue, and build a truly deep grasp of your research. This is also how he guided us. For every statement we made and every algorithm we proposed, he would try to understand it very thoroughly, not in a vague or superficial way, and never with empty, formal sounding talk (that I had with some other professor I had worked with).  
 >
-> **First-principles thinking is essential.**  
+> **First-principles thinking.**  
 >  
 > Setting aside what others have done and not getting trapped by the current status quo. Instead, you go back to the original starting point and focus on the real problem you are trying to solve. From there, you try to solve the problem itself, rather than simply building on top of someone else’s solution.  
 >
