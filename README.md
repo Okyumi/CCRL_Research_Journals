@@ -164,7 +164,9 @@ So, maximizing this sparse expectation is mathematically equivalent to **"Reachi
 ### Jan 21 Updates:
 1. For the manipulation task in that paper, specifically arm-push,  the environment has one goal designating the object's final coordinates, let's denote it as g_env. During the rollouts (collecting the experiences), actor always see observation + (g_env + some random noise); during the training of the actor network, they sample transitions from replay buffer, they use hindsight relabeling to change the goal to make it align with the ground truth future state.
 
-2. Notice that when they report their results, they show their main figure y-axis as “time at goal” rather than the success rate of the tasks. For the arm-push task, the environment goal is the object position of the cube. They initialize their robotic arm’s position to be very close to the cube, such that during the exploration phase the hand can easily touch the object and hence change the object’s position.
+2. Notice that when they report their results, they show their main figure y-axis as “time at goal” rather than the success rate of the tasks. 
+
+3. For the arm-push task, the environment goal is the object position of the cube. They initialize their robotic arm’s position to be very close to the cube, such that during the exploration phase the hand can easily touch the object and hence change the object’s position.
    
    If the actor never touches or moves the cube, the HER goals will stay constant for those trajectories, and learning can stall until some exploration episodes do move the cube. They make the robotic arm close to the cube, so during exploration the arm can actually touch it, thereby changing the object position, and these changes contribute to the learning signals in the critics’ encoders. Hence, for their experiment, they can simply set the goal as the object’s coordinates without further engineering, such as adding another goal like the distance between the arm and the object.
    
@@ -208,13 +210,9 @@ So, maximizing this sparse expectation is mathematically equivalent to **"Reachi
     - Need pro-longed exploration phase/behavior policy should be more explorative.
     - Need to check their paper on metaworld.
 
-<table>
-  <tr>
-    <td><video src="media/Jan24_rl-video-episode-0.mp4" controls width="240"></video></td>
-    <td><video src="media/Jan24_rl-video-episode-900.mp4" controls width="240"></video></td>
-    <td><video src="media/Jan24_rl-video-episode-1600.mp4" controls width="240"></video></td>
-  </tr>
-</table>
+| Episode 0 | Episode 900 | Episode 1600 |
+| --- | --- | --- |
+| ![Episode 0](media/Jan24_rl-video-episode-0.gif) | ![Episode 900](media/Jan24_rl-video-episode-900.gif) | ![Episode 1600](media/Jan24_rl-video-episode-1600.gif) |
 
 ---
 ### Jan 26
