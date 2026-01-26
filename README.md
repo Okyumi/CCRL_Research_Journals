@@ -12,7 +12,7 @@ This repository mainly serves as a tracking log for my ongoing research project,
 >  
 > **Deep understanding matters more than anything else.**  
 >  
-> One of the most important things I learned from my past research experience is the value of deep understanding in research, which is, never pretend that you understand. When you study a problem, you should not stop at the level of repeating someone else’s explanation. You should understand every part of it. If anything feels confusing, you should not pretend you understand. You should keep asking questions, again and again, unless you can barely find any questions. For the topic you are working on, you need to know it more deeply than anyone else.  
+> never pretend that you understand. When you study a problem, you should not stop at the level of repeating someone else’s explanation. You should understand every part of it. If anything feels confusing, you should not pretend you understand. You should keep asking questions, again and again, unless you can barely find any questions. For the topic you are working on, you need to know it more deeply than anyone else.  
 >  
 > In practice, this means you should be able to answer questions clearly, no matter who asks them. If you truly understand something, you can explain it in the simplest language, and ideally you can walk others through a few concrete examples. The reason you can answer questions well is that, before others even ask, you should already anticipate many of the questions during your own thinking and research. Then you can use papers, references, AI tools, and your own reasoning to work toward solid answers. You also need to stay alert to any hidden assumptions behind an answer.  
 >  
@@ -20,7 +20,7 @@ This repository mainly serves as a tracking log for my ongoing research project,
 >
 > **First-principles thinking is essential.**  
 >  
-> The second thing I learned what is often called first principles thinking. It means setting aside what others have done and not getting trapped by the current status quo. Instead, you go back to the original starting point and focus on the real problem you are trying to solve. From there, you try to solve the problem itself, rather than simply building on top of someone else’s solution.  
+> Setting aside what others have done and not getting trapped by the current status quo. Instead, you go back to the original starting point and focus on the real problem you are trying to solve. From there, you try to solve the problem itself, rather than simply building on top of someone else’s solution.  
 >
 > **Think top-down, execute bottom-up.**  
 >  
