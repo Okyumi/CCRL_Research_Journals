@@ -213,4 +213,15 @@ So, maximizing this sparse expectation is mathematically equivalent to **"Reachi
 ---
 ### Jan 26
 - they are collecting transitions from 512 envs in total, and result in a total steps of ~1e8, with exploration phase ~4e7.
-- in SAC we usually collect transition from 1 env with total steps of 1e6, exploration phase 1e4. if we want to collect all the transitions from 1 env, then it would take    0%|          | 5443/100000000 [00:17<88:20:36, 314.41it/s]; 88hours for 1 task, not to mention there are 9 tasks awaiting us.
+- in SAC we usually collect transition from 1 env with total steps of 1e6, exploration phase 1e4. if we want to collect all the transitions from 1 env, then it would take   
+   - 0%|          | 5443/100000000 [00:17<88:20:36, 314.41it/s]; 
+   - 88hours for 1 task, not to mention there are 9 tasks awaiting us.
+---
+### Jan 28
+- read paper about GCRL on manipulation tasks using single goal: [A Single Goal is All You Need](https://openreview.net/forum?id=xCkgX4Xfu0)
+- One surprising finding is that using a single goal for rollout collection works better than curriculum learning or multiple goals. This is counterintuitive, since we would expect strong exploration in the behavior policy to arise from a diversity of goals.
+- The results show that running multiple environments in parallel is very important. When using a single environment, after 3.5M steps the return is around 4–8, whereas with SAC and multiple environments, the return already reaches 23 after just 100k steps and later increases to around 4000.
+- a plausible explanation for this is running multiple envs in parallel might lead to a different replay buffer than a single env, even with the same update ratio.
+- using cpu to run envs in parallel hits the bottlenet, we need to use gpus to do that; that means jax implementation is important, but jax seems only work with brax. Need envs' source codes.
+- TODOS:
+   - perhaps replicate the experiments done in [A Single Goal is All You Need](https://openreview.net/forum?id=xCkgX4Xfu0)
