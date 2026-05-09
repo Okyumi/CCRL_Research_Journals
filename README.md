@@ -29,7 +29,10 @@ This repository mainly serves as a tracking log for my ongoing research project,
 >  
 > Your next executable step should be small, because smaller steps reduce friction and make it easier to start. For example, if I want to run experiments, I may first need to modify code. Then my next executable step could be as simple as opening my laptop lid. After that, opening VS Code or PyCharm or Cursor, connecting to the HPC or the cloud, and continuing from there. Each step should be specific, small, and something you can hold yourself accountable to.  
 
-
+---
+> [!NOTE]
+>  Golden rules of reading a paper: (1) Always ask questions. (2) Use your own language to describe the problem set-up, algorithm; and whenever there's anything unclear, always ask questions. You have LLMs nowadays. You can always ask questions with them. (3) 
+>  Golden rules of writing a paper: (1) A good paper usually introduces a simple method with novelty that achieve great performance among a lot of benchmark, with good insights. (2) Linear, clear arguments. Make every sentence earn its place: state one clear idea at a time, define terms precisely, and remove anything that does not help the reader understand your question, method, result, or claim. 
 ---
 Before introducing the continual learning pipeline, we define the core objective functions based on the probabilistic view of reinforcement learning.
 
